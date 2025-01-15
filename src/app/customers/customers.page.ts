@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {IonicModule} from "@ionic/angular";
+import {Router} from "@angular/router";
 
 @Component({
     selector: 'app-customers',
@@ -11,9 +12,13 @@ import {IonicModule} from "@ionic/angular";
 })
 export class CustomersPage implements OnInit {
 
-  constructor() { }
+    constructor(private router: Router){}
 
   ngOnInit() {
+  }
+
+  goToHome(){
+      this.router.navigate(['/home'])
   }
 
 }
