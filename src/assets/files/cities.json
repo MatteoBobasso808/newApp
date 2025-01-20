@@ -1,0 +1,16 @@
+{
+  "data": [
+    {
+      "name": "Buenos Aires",
+      "image": "ciudad.jpg"
+    },
+    {
+      "name": "Miami",
+      "image": "ciudad.jpg"
+    },
+    {
+      "name": "Barcelona",
+      "image": "ciudad.jpg"
+    }
+  ]
+}

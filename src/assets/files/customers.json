@@ -1,0 +1,22 @@
+{
+  "data": [
+    {
+      "name": "Juan",
+      "state": "Buenas",
+      "description": "",
+      "image": "avatar.png"
+    },
+    {
+      "name": "Tomas",
+      "state": "Chau",
+      "description": "",
+      "image": "avatar.png"
+    },
+    {
+      "name": "Jorge",
+      "state": "Mi loco",
+      "description": "",
+      "image": "avatar.png"
+    }
+  ]
+}
