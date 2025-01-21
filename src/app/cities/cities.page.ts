@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { IonicModule } from "@ionic/angular";
-import {Router} from "@angular/router";
+import {AlertController, IonicModule, ToastController} from "@ionic/angular";
+import {Router, RouterLink} from "@angular/router";
 import {HttpClient} from "@angular/common/http";
 import {map} from "rxjs";
 import {NgForOf} from "@angular/common";
@@ -11,7 +11,8 @@ import {NgForOf} from "@angular/common";
   styleUrls: ['./cities.page.scss'],
   imports: [
     IonicModule,
-    NgForOf
+    NgForOf,
+    RouterLink
   ]
 })
 export class CitiesPage implements OnInit {
@@ -20,7 +21,9 @@ export class CitiesPage implements OnInit {
 
   constructor(
     private router: Router,
-    private http: HttpClient) { }
+    private http: HttpClient,
+    public toastController: ToastController,
+    public alertController: AlertController) { }
 
   ngOnInit() {
     this.getCities().subscribe(res=>{
@@ -37,6 +40,39 @@ export class CitiesPage implements OnInit {
           return res.data;
         })
       )
+  }
+
+  async presentToast1(){
+    const toast = await this.toastController.create({
+      message: "Ciudad Seleccionada",
+      duration: 1000,
+      position: "bottom"
+    });
+    toast.present();
+  }
+
+  async presentAlert1(){
+    const alert = await this.alertController.create({
+      header: "Borrar ciudad",
+      message: "¿Estas seguro que quieres borrar la ciudad?",
+      buttons: [
+        {
+          text: 'No',
+          handler: () => {
+            console.log("No cancel")
+          }
+        },
+        {
+          text: 'Si',
+          handler: () => {
+            console.log("Eliminada")
+          }
+        }
+      ]
+    });
+    await alert.present();
+    let result = await alert.onDidDismiss();
+    console.log(result);
   }
 
 }

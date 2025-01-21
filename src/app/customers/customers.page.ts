@@ -17,6 +17,7 @@ import {NgForOf} from "@angular/common";
 export class CustomersPage implements OnInit {
 
   users: any = [];
+  searchedUser: any;
 
   permission: boolean = true;
 
@@ -29,6 +30,7 @@ export class CustomersPage implements OnInit {
     this.getCustomers().subscribe(res=>{
       console.log("Res", res);
       this.users = res;
+      this.searchedUser = this.users;
     });
   }
 
@@ -44,6 +46,17 @@ export class CustomersPage implements OnInit {
             return res.data;
           })
         )
+  }
+
+  searchCustomer(event: Event){
+    const input = event.target as HTMLInputElement;
+    const text = input.value;
+    this.searchedUser = this.users;
+    if(text && text.trim() != ''){
+      this.searchedUser = this.searchedUser.filter((user: any) => {
+        return (user.name.toLowerCase().indexOf(text.toLowerCase()) > -1);
+      })
+    }
   }
 
 }
