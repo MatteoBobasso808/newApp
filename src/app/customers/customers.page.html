@@ -10,6 +10,10 @@
 
 <ion-content>
 
+    <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
+      <ion-refresher-content refreshingSpinner="circles"></ion-refresher-content>
+    </ion-refresher>
+
   @if (permission) {
     <ion-list>
       <ion-list-header>

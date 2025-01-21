@@ -17,6 +17,7 @@ import {NgForOf} from "@angular/common";
 })
 export class CitiesPage implements OnInit {
 
+  token = localStorage.getItem("token");
   cities: any = [];
 
   constructor(
@@ -26,6 +27,9 @@ export class CitiesPage implements OnInit {
     public alertController: AlertController) { }
 
   ngOnInit() {
+    console.log("token: ", this.token)
+    localStorage.removeItem("token"); // borrar algo en especifico del local storage
+    // localStorage.clear() => limpiar por completo nuestro local storage
     this.getCities().subscribe(res=>{
       console.log("Res", res);
       this.cities = res;

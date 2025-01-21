@@ -59,4 +59,12 @@ export class CustomersPage implements OnInit {
     }
   }
 
+  handleRefresh(event: CustomEvent) {
+    this.getCustomers();
+    setTimeout(() => {
+      // Any calls to load data go here
+      (event.target as HTMLIonRefresherElement).complete();
+    }, 2000);
+  }
+
 }
